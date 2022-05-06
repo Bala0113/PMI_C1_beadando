@@ -1,11 +1,11 @@
 import java.util.Calendar;
 import java.util.Date;
 
-public class gui {
+public class messages {
 
     public static void menu(){
         System.out.println("""
-                Válasszon az alábbi menüpontok közül...
+                \nVálasszon az alábbi menüpontok közül...
                 (1)\tÚj beteg hozzáadása
                 (2)\tSzerkesztés
                 (3)\tTörlés
@@ -24,5 +24,9 @@ public class gui {
 
     public static void notNumber() {
         System.out.println("\nHIBA!\t Ez az adat csak szám lehet...");
+    }
+
+    public static void onlyYOrN() {
+        System.out.println("\nHIBA!\t Ez az adat csak 1 vagy 0 lehet... (1=igen | 0=nem");
     }
 }

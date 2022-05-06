@@ -191,6 +191,7 @@ public class userServices {
                     dt.setLak(eElement.getElementsByTagName("LAK").item(0).getTextContent());
                     dt.setTel(eElement.getElementsByTagName("TEL").item(0).getTextContent());
                     dt.setSzoba(Integer.parseInt(eElement.getElementsByTagName("SZOBA").item(0).getTextContent()));
+                    dt.setDiagn(eElement.getElementsByTagName("DIAGNOZIS").item(0).getTextContent());
                     return dt;
                 }
             }
@@ -202,7 +203,7 @@ public class userServices {
     /*A függvény megkapja a módosított értékeket és felül írja ezekkel az értékekkel
          az ugyanazzal a Taj Taggel  rendelkező Usert
         */
-    public static boolean editedUserSave(data dt) throws ParserConfigurationException, IOException, SAXException, TransformerException, ParseException {
+    public static boolean editedUserSave(data dt) throws ParserConfigurationException, IOException, SAXException, TransformerException {
         File inputFile = new File("./src/main/resources/db.xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
@@ -219,12 +220,12 @@ public class userServices {
 
                     String sSzul = df.format(dt.getSzul());
 
-                    eElement.getElementsByTagName("TAJ").item(0).setTextContent(dt.getTaj());
                     eElement.getElementsByTagName("NEV").item(0).setTextContent(dt.getNev());
                     eElement.getElementsByTagName("SZUL").item(0).setTextContent(sSzul);
                     eElement.getElementsByTagName("LAK").item(0).setTextContent(dt.getLak());
                     eElement.getElementsByTagName("TEL").item(0).setTextContent(dt.getTel());
                     eElement.getElementsByTagName("SZOBA").item(0).setTextContent(String.valueOf(dt.getSzoba()));
+                    eElement.getElementsByTagName("DIAGNOZIS").item(0).setTextContent(dt.getDiagn());
 
                     FileOutputStream output = new FileOutputStream("src/main/resources/db.xml");
                     writeXml(document, output);

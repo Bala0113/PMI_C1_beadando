@@ -15,46 +15,34 @@ public class start {
 
 
     public static void main(String[] args) throws ParseException, ParserConfigurationException, IOException, TransformerException, SAXException {
-        gui.welcome();
+        messages.welcome();
         userManager.usersRefresh();
         run();
     }
 
     public static void run() throws ParseException, ParserConfigurationException, IOException, TransformerException, SAXException {
-        gui.menu();
+        messages.menu();
 
         int answer = scanner.nextInt();
         switch (answer) {
-            case 1:
-                add a = new add();
-                a.add();
+            case 1 -> {
+                CRUD.add();
                 userManager.usersRefresh();
-                break;
-            case 2:
-                edit b = new edit();
-                b.edit();
-                userManager.usersRefresh();
-                break;
-            case 3:
-                delete c = new delete();
-                c.delete();
-                userManager.usersRefresh();
-                break;
-            case 4:
-                usersList.userList();
-                userManager.usersRefresh();
-                break;
-            case 5:
-                System.out.println("Friday");
-                break;
-            case 6:
-
-                break;
-            case 7:
-                System.out.println("Sunday");
-                break;
             }
-
+            case 2 -> {
+                CRUD.edit();
+                userManager.usersRefresh();
+            }
+            case 3 -> {
+                CRUD.delete();
+                userManager.usersRefresh();
+            }
+            case 4 -> {
+                userManager.userList();
+                userManager.usersRefresh();
+            }
+            case 5 -> System.out.println("Friday");
+        }
         }
 
 

@@ -2,5 +2,94 @@
 <USERS>
 
 
-
+    <USER>
+        <TAJ>199854265</TAJ>
+        <NEV>Orsos Jázmin</NEV>
+        <SZUL>1999/05/20</SZUL>
+        <LAK>8630 Balatonboglár</LAK>
+        <TEL>06204423753</TEL>
+        <SZOBA>3</SZOBA>
+        <DIAGNOZIS>Alergiás roham</DIAGNOZIS>
+    </USER>
+    <USER>
+        <TAJ>110915234</TAJ>
+        <NEV>Toth Ferenc</NEV>
+        <SZUL>1995/05/20</SZUL>
+        <LAK>1221 Budapest</LAK>
+        <TEL>06303581858</TEL>
+        <SZOBA>2</SZOBA>
+        <DIAGNOZIS>Légzőszervi megbetegedés</DIAGNOZIS>
+    </USER>
+    <USER>
+        <TAJ>987122456</TAJ>
+        <NEV>Kovács Attila</NEV>
+        <SZUL>1968/02/09</SZUL>
+        <LAK>8511 Pápa</LAK>
+        <TEL>06305567258</TEL>
+        <SZOBA>3</SZOBA>
+        <DIAGNOZIS>Májzsugor(alkoholos májbetegség)</DIAGNOZIS>
+    </USER>
+    <USER>
+        <TAJ>101999672</TAJ>
+        <NEV>Szabó Zsuzsanna</NEV>
+        <SZUL>2001/04/22</SZUL>
+        <LAK>9000 Győr</LAK>
+        <TEL>06702566527</TEL>
+        <SZOBA>3</SZOBA>
+        <DIAGNOZIS>Idegrendszeri betegség, agyhártya gyulladás</DIAGNOZIS>
+    </USER>
+    <USER>
+        <TAJ>037687210</TAJ>
+        <NEV>Horváth Gábor</NEV>
+        <SZUL>1995/10/05</SZUL>
+        <LAK>2407 Dunaújváros</LAK>
+        <TEL>06204712066</TEL>
+        <SZOBA>2</SZOBA>
+        <DIAGNOZIS>Mozgás szervi betegség, teniszkönyök</DIAGNOZIS>
+    </USER>
+    <USER>
+        <TAJ>115652436</TAJ>
+        <NEV>Somogyi Kálmán</NEV>
+        <SZUL>1970/05/05</SZUL>
+        <LAK>7400 Kaposvár</LAK>
+        <TEL>06205566777</TEL>
+        <SZOBA>2</SZOBA>
+        <DIAGNOZIS>Szürkehályog</DIAGNOZIS>
+    </USER>
+    <USER>
+        <TAJ>125761436</TAJ>
+        <NEV>Ács Mónika</NEV>
+        <SZUL>1944/08/20</SZUL>
+        <LAK>8000 Székesfehérvár</LAK>
+        <TEL>06205524967</TEL>
+        <SZOBA>3</SZOBA>
+        <DIAGNOZIS>Angina pectoris</DIAGNOZIS>
+    </USER>
+    <USER>
+        <TAJ>111526966</TAJ>
+        <NEV>Kiss István</NEV>
+        <SZUL>2002/01/30</SZUL>
+        <LAK>8230 Balatonfüred</LAK>
+        <TEL>06305562524</TEL>
+        <SZOBA>4</SZOBA>
+        <DIAGNOZIS>Gomba mérgezés</DIAGNOZIS>
+    </USER>
+    <USER>
+        <TAJ>110521987</TAJ>
+        <NEV>Mátyás Dominik</NEV>
+        <SZUL>1993/06/21</SZUL>
+        <LAK>3600 Miskolc</LAK>
+        <TEL>0630152654</TEL>
+        <SZOBA>9</SZOBA>
+        <DIAGNOZIS>COVID-19 fertőzés</DIAGNOZIS>
+    </USER>
+    <USER>
+        <TAJ>011552212</TAJ>
+        <NEV>Varga Edina</NEV>
+        <SZUL>1989/12/24</SZUL>
+        <LAK>1222 Budapest</LAK>
+        <TEL>06705211235</TEL>
+        <SZOBA>3</SZOBA>
+        <DIAGNOZIS>Gerincfedülés</DIAGNOZIS>
+    </USER>
 </USERS>
