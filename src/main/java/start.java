@@ -10,21 +10,20 @@ import java.util.Scanner;
 public class start {
 
     protected static final Scanner scanner = new Scanner(System.in);
-
     public static ArrayList<data> users = new ArrayList<>();
 
-
+    //Main függvény: frissíti a listát és elindítja a programot
     public static void main(String[] args) throws ParseException, ParserConfigurationException, IOException, TransformerException, SAXException {
         messages.welcome();
         userManager.usersRefresh();
         run();
     }
 
+    //A választható menüpontok:
     public static void run() throws ParseException, ParserConfigurationException, IOException, TransformerException, SAXException {
         messages.menu();
 
-        int answer = scanner.nextInt();
-        switch (answer) {
+        switch (scannerLimit.menuChoice()) {
             case 1 -> {
                 CRUD.add();
                 userManager.usersRefresh();
@@ -41,7 +40,11 @@ public class start {
                 userManager.userList();
                 userManager.usersRefresh();
             }
-            case 5 -> System.out.println("Friday");
+            case 5 -> {
+                messages.exit();
+                System.exit(5);
+
+            }
         }
         }
 

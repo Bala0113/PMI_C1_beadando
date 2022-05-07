@@ -31,7 +31,6 @@ public class data {
     public void setNev(String nev) {
         this.nev = nev;
     }
-
     public Date getSzul() {
         return szul;
     }

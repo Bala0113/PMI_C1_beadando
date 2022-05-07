@@ -28,6 +28,7 @@ public class userServices {
 
 
 
+    //Végig megy Xml fájlban az összes Useren és egyenként egy listába gyűjti őket
     public static ArrayList<data> readUsersFromXml() throws ParserConfigurationException, IOException, SAXException, ParseException {
         File inputFile = new File("./src/main/resources/db.xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -179,7 +180,6 @@ public class userServices {
                 Element eElement = (Element) nNode;
 
                 if (eElement.getElementsByTagName("TAJ").item(0).getTextContent().equals(search)){
-
 
                     String sDate = eElement.getElementsByTagName("SZUL").item(0).getTextContent();
                     Date szul=new SimpleDateFormat("yyyy/MM/dd").parse(sDate);

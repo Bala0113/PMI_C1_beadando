@@ -5,113 +5,138 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import static jdk.internal.vm.PostVMInitHook.run;
 
 public class CRUD {
 
+    public static int choice;
+
+
+    //Bekéri az új beteg adatait és eltárolja azokat az Xml fileban a 'userServices.newUser' függvény segítségével
     public static void add() throws ParseException, ParserConfigurationException, IOException, TransformerException, SAXException {
         data patient = new data();
-        System.out.println("\nAz új beteg hozzáadását választotta. Kérem adja meg a beteg adatait...");
+        System.out.println(messages.yellow +"\nAz új beteg hozzáadását választotta. Kérem adja meg a beteg adatait..." + messages.reset);
+        messages.continueOrback();
+        if (scannerLimit.yesOrNo() == 0) start.run();
         start.scanner.nextLine();
+
         System.out.println("\nTajszám: ");
-        String taj = start.scanner.nextLine();
+        patient.setTaj(scannerLimit.numberValidate9());
+        start.scanner.nextLine();
+
         System.out.println("\nNév: ");
-        String nev = start.scanner.nextLine();
+        patient.setNev(scannerLimit.notEmpty());
+
         System.out.println("\nSzületési idő: ");
-        String sDate = start.scanner.nextLine();
+        patient.setSzul(new SimpleDateFormat("yyyy.MM.dd").parse(scannerLimit.dateValidate()));
+
         System.out.println("\nLakcím: ");
-        String lak = start.scanner.nextLine();
+        patient.setLak(scannerLimit.notEmpty());
+
         System.out.println("\nTelefonszám: ");
-        String tel = start.scanner.nextLine();
+        patient.setTel(scannerLimit.numberValidate());
+
         System.out.println("\nSzoba: ");
-        int szoba = start.scanner.nextInt();   start.scanner.nextLine();
+        patient.setSzoba(Integer.parseInt(scannerLimit.numberValidate()));
+
         System.out.println("\nDiagnózis: ");
-        String diag = start.scanner.nextLine();
+        patient.setDiagn(scannerLimit.notEmpty());
 
-        Date szul=new SimpleDateFormat("yyyy.MM.dd").parse(sDate);
-        patient.setTaj(taj);
-        patient.setNev(nev);
-        patient.setSzul(szul);
-        patient.setLak(lak);
-        patient.setTel(tel);
-        patient.setSzoba(szoba);
-        patient.setDiagn(diag);
-
-        userServices.newUser(patient); ;
-        System.out.println("A beteget sikeresen felvettük adatbázisunkba!");
+        userServices.newUser(patient);
+        messages.succesfulAdded();
     }
 
 
+    //Bekéri a betegnek a tajszámát, majd megkeresi azt az Xml fileban és felajánlja az adatainak a szerkesztését --> módosítja az xml fileban a Usert
     public static void edit() throws ParserConfigurationException, IOException, SAXException, ParseException, TransformerException {
-        System.out.println("\nA beteg adatainak szerkesztését választotta. Kérem adja meg a beteg TAJ számát: ");
-        String search=start.scanner.next();
+        System.out.println(messages.yellow + "\nA beteg adatainak szerkesztését választotta. " + messages.reset);
+        messages.continueOrback();
+        if (scannerLimit.yesOrNo() == 0){start.run();}
+        start.scanner.nextLine();
+        System.out.println(messages.yellow + "\nKérem adja meg a beteg TAJ számát:  " + messages.reset);
+        String search=scannerLimit.numberValidate9();
         data editedPatient = userServices.actualData(search);
-        boolean searchResult = userServices.userSearch(search);
+
         if (userServices.userSearch(search)) {
             System.out.println("A beteg adatai megtalálva...");
-
             data actualPatient = userServices.actualData(search);
+            assert editedPatient != null;
             editedPatient.setTaj(search);
+
+            assert actualPatient != null;
             System.out.println("Az eretedi név ''"+ actualPatient.getNev() + "'' volt. Kívánja szerkeszteni? 1/0 ");
-            if (start.scanner.nextInt() == 1) {
+            choice = scannerLimit.yesOrNo();
+            if (choice == 1) {
                 start.scanner.nextLine();
                 System.out.println("\nÚj név: ");
-                editedPatient.setNev(start.scanner.nextLine());
+                editedPatient.setNev(scannerLimit.notEmpty());
+            }
 
-            }
             System.out.println("Az eretedi születési dátum ''"+ userServices.df.format(actualPatient.getSzul()) + "'' volt. Kívánja szerkeszteni? 1/0 ");
-            if (start.scanner.nextInt() == 1) {
+            choice = scannerLimit.yesOrNo();
+            if (choice == 1) {
+                start.scanner.nextLine();
                 System.out.println("\nÚj születési dátum ");
-                String sDate = start.scanner.next();
-                Date szul=new SimpleDateFormat("yyyy.MM.dd").parse(sDate);
-                editedPatient.setSzul(szul);
+                editedPatient.setSzul(new SimpleDateFormat("yyyy.MM.dd").parse(scannerLimit.dateValidate()));
             }
+
             System.out.println("Az eretedi lakcím ''"+ actualPatient.getLak() + "'' volt. Kívánja szerkeszteni? 1/0 ");
-            if (start.scanner.nextInt() == 1) {
+            choice = scannerLimit.yesOrNo();
+            if (choice == 1) {
                 start.scanner.nextLine();
                 System.out.println("\nÚj lakcím: ");
-                editedPatient.setLak(start.scanner.nextLine());
-
+                editedPatient.setLak(scannerLimit.notEmpty());
             }
+
             System.out.println("Az eretedi telefonszám ''"+ actualPatient.getTel() + "'' volt. Kívánja szerkeszteni? 1/0 ");
-            if (start.scanner.nextInt() == 1) {
+            choice = scannerLimit.yesOrNo();
+            if (choice == 1) {
                 start.scanner.nextLine();
                 System.out.println("\nÚj telefonszám: ");
-                editedPatient.setTel(start.scanner.nextLine());
-
+                editedPatient.setTel(scannerLimit.numberValidate());
             }
+
             System.out.println("Az eretedi szobaszám ''"+ actualPatient.getSzoba() + "'' volt. Kívánja szerkeszteni? 1/0 ");
-            if (start.scanner.nextInt() == 1) {
+            choice = scannerLimit.yesOrNo();
+            if (choice == 1) {
                 start.scanner.nextLine();
                 System.out.println("\nÚj szobaszám: ");
-                editedPatient.setSzoba(start.scanner.nextInt());
-
+                editedPatient.setSzoba(Integer.parseInt(scannerLimit.numberValidate()));
             }
+
             System.out.println("Az eretedi diagnóózis ''"+ actualPatient.getDiagn() + "'' volt. Kívánja szerkeszteni? 1/0 ");
-            if (start.scanner.nextInt() == 1) {
+            choice = scannerLimit.yesOrNo();
+            if (choice == 1) {
                 start.scanner.nextLine();
                 System.out.println("\nÚj diagnózis: ");
-                editedPatient.setDiagn(start.scanner.nextLine());
+                editedPatient.setDiagn(scannerLimit.notEmpty());
 
             }
 
             userServices.editedUserSave(editedPatient);
-            if (userServices.editedUserSave(editedPatient)) System.out.println("Sikeres mentés!");
-            else System.out.println("Sikertelen mentés!");
+            if (userServices.editedUserSave(editedPatient)) messages.successfulSaving();
+            else messages.unsuccessfulSaving();
         }
     }
 
 
-    public static void delete() throws ParserConfigurationException, IOException, SAXException, ParseException, TransformerException {
-        System.out.println("\nA beteg adatainak törlését választotta. Kérem adja meg a beteg Taj számát: ");
-        String search = start.scanner.next();
-        if (userServices.userSearch(search)){
-            System.out.println("A beteg adatai megtalálva...");
 
+    //Bekéri a betegnek a tajszámát, majd megkeresi azt az Xml fileban és kitörli a kiválasztott Usert
+    public static void delete() throws ParserConfigurationException, IOException, SAXException, ParseException, TransformerException {
+        System.out.println(messages.yellow + "\nA beteg adatainak törlését választotta. " + messages.reset);
+        messages.continueOrback();
+        if (scannerLimit.yesOrNo() == 0)run();
+        System.out.println(messages.yellow + "\nKérem adja meg a beteg TAJ számát:  " + messages.reset);
+        String search = scannerLimit.numberValidate9();
+        if (userServices.userSearch(search)){
+            messages.found();
+            System.out.println("Biztos törölni szeretné a "+ search + " tajszámmal rendelkező beteget? 1/0");
+            choice = scannerLimit.yesOrNo();
+            if (choice == 1) {
             userServices.deleteUser(search);
-            System.out.println("A beteg adatai sikeresen törlődtek!");
+            messages.successfulDelete();}
         }
-        else  System.out.println("Nem található ilyen taj számmal rendelkező beteg..."); start.run();
+        else  messages.notFound(); start.run();
 
     }
 }
