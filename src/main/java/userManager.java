@@ -14,7 +14,7 @@ public class userManager {
 
     // Kiiratja a betegekkel teli listát
     public static void userList(){
-        String fmt = "%1$10s %2$20s %3$20s %4$25s %5$20s %6$10s %7$30s%n";       //  Formátum a kiíráshoz
+        String fmt = "%1$10s %2$20s %3$20s %4$25s %5$20s %6$10s %7$40s%n";       //  Formátum a kiíráshoz
         System.out.printf(fmt,"Tajszám","Név","Születési idő","Lakhely","Telefonszám","Szoba","Diagnózis");
 
         for (int i = 0; i< start.users.size();i++) {
