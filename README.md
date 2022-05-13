@@ -1,4 +1,4 @@
-# Korház/ügyelet nyilvántartó program
+# Kórház/ügyelet nyilvántartó program
 A program célja egy egészségügyi intézmény betegeinek adatainak tárolása.
 
 A betegeknek a következő adatait tárolja el: a beteg tajszámát, nevét, születési dátumát, lakcímét, telefonszámát, hogy az intézmény melyik szobájában van, és a diagnózist.
